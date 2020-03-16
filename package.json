@@ -1,0 +1,15 @@
+{
+  "name": "freemarker-loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "ejs": "^2.6.1",
+    "freemarker": "^2.1.0",
+    "json-merge-patch": "^0.2.3",
+    "loader-utils": "^1.1.0",
+    "mockjs": "^1.0.1-beta3"
+  }
+}
