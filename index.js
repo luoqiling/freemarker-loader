@@ -76,7 +76,7 @@ module.exports = function(source) {
 // 将html里的图片模块化
 function replaceSrc(fileContent, exclude) {
   let reg = new RegExp('(src|data-src)=\\\\?[\'\"]([\\s\\S]*?)\\\\?[\'\"]', 'ig')
-	fileContent = fileContent.replace(reg, function(str, attrName, imgUrl){
+  fileContent = fileContent.replace(reg, function(str, attrName, imgUrl){
     if(!imgUrl) return str // 避免空src引起编译失败
     if(/^(http(s?):)?\/\//.test(imgUrl)) return str // 绝对路径的图片不处理
     if(!/\.(jpg|jpeg|png|gif|svg|webp|ico)/i.test(imgUrl)) return str // 非静态图片不处理
