@@ -6,7 +6,9 @@
 
 ## 环境配置
 
-1、先安装java环境
+此loader最大缺点在于使用前需要配置环境。
+
+1、电脑系统需先安装java环境
 
 2、修改fmpp文件的JAVA_HOME配置，文件路径为./node_modules/freemarker/fmpp/bin/fmpp
 
