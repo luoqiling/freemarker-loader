@@ -73,26 +73,26 @@ module.exports = function(source) {
   }
 }
 
-//将html里的图片模块化
+// 将html里的图片模块化
 function replaceSrc(fileContent, exclude) {
   let reg = new RegExp('(src|data-src)=\\\\?[\'\"]([\\s\\S]*?)\\\\?[\'\"]', 'ig')
 	fileContent = fileContent.replace(reg, function(str, attrName, imgUrl){
-		if(!imgUrl) return str // 避免空src引起编译失败
-		if(/^(http(s?):)?\/\//.test(imgUrl)) return str // 绝对路径的图片不处理
-		if(!/\.(jpg|jpeg|png|gif|svg|webp|ico)/i.test(imgUrl)) return str // 非静态图片不处理
+    if(!imgUrl) return str // 避免空src引起编译失败
+    if(/^(http(s?):)?\/\//.test(imgUrl)) return str // 绝对路径的图片不处理
+    if(!/\.(jpg|jpeg|png|gif|svg|webp|ico)/i.test(imgUrl)) return str // 非静态图片不处理
     if(exclude && imgUrl.indexOf(exclude) != -1) return str // 不处理被排除的
-    //路径开头没有./，也没有@
-		if(!(/^[\.\/]/).test(imgUrl) && imgUrl.indexOf('@') < 0) {
-			imgUrl = './' + imgUrl
+    // 路径开头没有./，也没有@
+    if(!(/^[\.\/]/).test(imgUrl) && imgUrl.indexOf('@') < 0) {
+      imgUrl = './' + imgUrl
     }
-		return attrName+"=\"+JSON.stringify(require("+JSON.stringify(imgUrl)+").default)+\""
+    return attrName+"=\"+JSON.stringify(require("+JSON.stringify(imgUrl)+").default)+\""
   })
-	return fileContent
+  return fileContent
 }
 
 var includes = []
 
-//获取include的文件
+// 获取include的文件
 function getIncludeFiles(content, path) {
   // var reg = new RegExp("<%\\s+include\\s+([\\s\\S]*?)\\s+%>", "g")
   let reg = new RegExp("<%-\\s+include\\(\\s*[\'\"]([\\s\\S]*?)[\'\"][,\\s*]*([\\s\\S]*?)\\)\\s+%>", "g")
