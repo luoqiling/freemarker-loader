@@ -2,25 +2,9 @@
 
 ## 简介
 
-解析html文件中的freemarker语法和ejs语法。如果在html文件中有使用到src属性或data-src属性，且属性值为相对路径，那么该相对路径会被解析，以供webpack依赖打包。
+freemarker-loader能够解析html文件中的freemarker语法和ejs语法。如果标签有src属性或data-src属性，且属性值为相对路径，那么freemarker-loader会解析相对路径，以供webpack依赖打包。
 
-## 环境配置
-
-此loader最大缺点在于使用前需要配置环境。
-
-1、电脑系统需先安装java环境
-
-2、修改fmpp文件的JAVA_HOME配置，文件路径为./node_modules/freemarker/fmpp/bin/fmpp
-
-````
-默认值
-JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
-
-改成已安装好的JAVA_HOME路径，例如
-JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
-````
-
-## webpack
+## Webpack
 
 ````
 {
@@ -39,30 +23,34 @@ JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
 }
 ````
 
-## HTML
+## 示例
 
 ````
-# 假设目录结构为
-
+# 目录结构
 + src
-  + assets
-   - xxx.png
-+ public
+  - xxx.png
   - index.html
   - index.json
 ````
 
-### 配置src或data-src
+#### 解析src或data-src
+
 ````
 # index.html
 
 # 相对路径
-<img src="../src/assets/xxx.png" />
+<img src="./xxx.png" />
 
 # 别名（"@":"src路径"）
-<img src="@/assets/xxx.png" />
+<img src="@/xxx.png" />
 ````
 
-### 配置freemarker数据
+#### 配置mock数据
 
-新建一个json文件，与html文件同名且同级目录。该json文件支持mockjs语法。
+新建一个与html文件同名且同级的json文件。freemarker-loader能够解析json文件的mockjs语法。
+
+## 注意
+
+1、运行前需安装java jdk，配置java环境变量
+
+2、使用bash shell运行命令
