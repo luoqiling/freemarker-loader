@@ -2,7 +2,7 @@
 
 ## 简介
 
-freemarker-loader能够解析html文件中的freemarker语法和ejs语法。如果标签有src属性或data-src属性，且属性值为相对路径，那么freemarker-loader会解析相对路径，以供webpack依赖打包。
+`freemarker-loader`能够解析html文件中的`freemarker`语法和ejs语法。如果标签有`src`或`data-src`属性，且属性值为相对路径，那么`freemarker-loader`会解析相对路径，以供`webpack`依赖打包。
 
 ## Webpack
 
@@ -25,15 +25,16 @@ freemarker-loader能够解析html文件中的freemarker语法和ejs语法。如�
 
 ## 示例
 
+#### 目录结构
+
 ````
-# 目录结构
 + src
   - xxx.png
   - index.html
   - index.json
 ````
 
-#### 解析src或data-src
+#### src/data-src
 
 ````
 # index.html
@@ -47,10 +48,10 @@ freemarker-loader能够解析html文件中的freemarker语法和ejs语法。如�
 
 #### 配置mock数据
 
-新建一个与html文件同名且同级的json文件。freemarker-loader能够解析json文件的mockjs语法。
+新建一个与html文件同名且同级的json文件。`freemarker-loader`能够解析json文件的`mockjs`语法。
 
 ## 注意
 
-1、运行前需安装java jdk，配置java环境变量
+1、运行前，安装java JDK，配置java环境变量。
 
-2、使用bash shell运行命令
+2、运行前，将shell切换为bash。
